@@ -1,4 +1,5 @@
 import 'package:calculator/calc_button.dart';
+import 'package:calculator/calculator.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  Calculator calculator = Calculator();
   var operator = '';
   var text = '0';
 
@@ -45,16 +47,16 @@ class _HomeState extends State<Home> {
     setState(() {
       switch(operator) {
         case '*':
-          text = (double.parse(number1) * double.parse(number2)).toStringAsFixed(1);
+          text = calculator.multiply(double.parse(number1), double.parse(number2)).toStringAsFixed(1);
           break;
         case '/':
-          text = (double.parse(number1) / double.parse(number2)).toStringAsFixed(1);
+          text = calculator.divide(double.parse(number1), double.parse(number2)).toStringAsFixed(1);
           break;
         case '-':
-          text = (double.parse(number1) - double.parse(number2)).toStringAsFixed(1);
+          text = calculator.subtract(double.parse(number1),double.parse(number2)).toStringAsFixed(1);
           break;
         case '+':
-          text = (double.parse(number1) + double.parse(number2)).toStringAsFixed(1);
+          text = calculator.add(double.parse(number1),double.parse(number2)).toStringAsFixed(1);
           break;
       }
     });
@@ -70,7 +72,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text("Calculator"),
       ),
-      body: Container(
+      body: SizedBox(
         height: size.height,
         child: Column(
           children: [

@@ -23,7 +23,7 @@ class CalcButton extends StatelessWidget {
       child: MaterialButton(
         color: color ?? Colors.blue,
         onPressed: onItemTap,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         child:  Text(text,
           style: TextStyle(
               color: textColor ?? Colors.black,
